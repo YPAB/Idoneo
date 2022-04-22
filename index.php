@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 
-	<link href="public/assets/css/styles-principal.css" rel="stylesheet" >
+	<link href="public/assets/css/styles-principal.css" rel="stylesheet"/>
 	<title>Prueba Idoneo - SYP</title>
 	
 </head>
