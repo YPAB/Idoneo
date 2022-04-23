@@ -5,7 +5,12 @@
 	<meta charset="utf-8" />
 
 	<link href="public/assets/css/styles-principal.css" rel="stylesheet"/>
-	<title>Prueba Idoneo - SYP</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+		<title>Prueba Idoneo - SYP</title>
 	
 </head>
 <body>
@@ -15,7 +20,7 @@
 	<header id="cabecera">
 		<div id="logo">
 			<a href="index.php">
-				Sistema de autenticación - PHP-JS-CSS
+				Sistema de autenticación - Idoneo
 
 			</a>
 			
@@ -45,12 +50,13 @@
 			</ul>
 		
 		</nav>
+		<div class="clearfix"></div>
 	</header>
 
 	<div id="contenedor">
 		<!-- BARRA LATERAL -->
 			<aside id="sidebar">
-				<div id="login" class="contenedor-aside">
+				<div id="login" class="formulario">
 					<h3> Iniciar Sesión</h3>
 					<form action="login.php" method="POST">
 						<label for="email">Email</label>
@@ -65,7 +71,7 @@
 				</div>
 
 
-				<div id="register" class="contenedor-aside">
+				<div id="register" class="formulario">
 					<h3> Registrarse</h3>
 					<form action="register.php" method="POST">
 
@@ -127,7 +133,7 @@
 			</article>
 			
 		</div>
-		
+		<div class="clearfix"></div>
 	</div>
 
 	<footer id="pie">
