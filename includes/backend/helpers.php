@@ -11,7 +11,7 @@
 	}
 
 	function borrarErrores(){
-		$borrado = session_unset();
+		$borrado = session_unset($_SESSION['errores']);
 
 		return $borrado;
 
