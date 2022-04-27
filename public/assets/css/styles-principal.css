@@ -20,6 +20,21 @@ body {
     background: url(../img/cubo-2.jpg) #F4F4F4;
   }
 
+.alerta{
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    background: green;
+    box-shadow: 0px 1px 3px #ccc;
+    margin-bottom: 10px;
+    border-radius: 2px;
+
+}
+
+.alerta-error{
+  background: red;
+}
+
 
   /*Estilo Cabecera*/
 
@@ -198,3 +213,4 @@ input[type="submit"] {
   padding: 20px;
   text-align: center;
 }
+
