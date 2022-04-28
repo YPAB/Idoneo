@@ -20,6 +20,10 @@ body {
     background: url(../img/cubo-2.jpg) #F4F4F4;
   }
 
+  table, th, td {
+  border: 1px solid black;
+}
+
 .alerta{
     padding: 5px;
     font-size: 14px;

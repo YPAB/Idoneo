@@ -8,12 +8,14 @@
 						<h3> Bienvenido: <?=$_SESSION['usuario']['nombre'].' '. $_SESSION['usuario']['apellidos']; ?> </h3>
 						<a href="cerrar-session.php" class="boton">Cerrar Sesión</a>
 						<a href="mis-datos.php" class="boton boton-naranja">Mis Datos</a>
-						<a href="categoria.php" class="boton boton-verde">Categorias</a>
+						<a href="crear-categoria.php" class="boton boton-verde">Crear Categoría</a>
+						<a href="listar-categorias.php" class="boton boton-verde">Categorías</a>
 					</div>
 
 
 				<?php endif; ?>
 
+				<?php if(!isset($_SESSION['usuario'])): ?>
 				<div id="login" class="formulario">
 					<!--Mostrar Errores -->
 
@@ -24,25 +26,25 @@
 
 					<?php endif; ?>
 
-					<h3> Iniciar Sesión</h3>
-					<form action="login.php" method="POST">
-						<label for="email">Email</label>
-						<input type="email" name="email"/>
+					
+						<h3> Iniciar Sesión</h3>
+						<form action="login.php" method="POST">
+							<label for="email">Email</label>
+							<input type="email" name="email"/>
 
-						<label for="password"> Contraseña </label>
-						<input type="password" name="password"/>
+							<label for="password"> Contraseña </label>
+							<input type="password" name="password"/>
 
-						<input type="submit" value="Ingresar" />
-					</form>
+							<input type="submit" value="Ingresar" />
+						</form>
+					<?php endif; ?>
 					
 				</div>
 
+				<?php if(!isset($_SESSION['usuario'])): ?>
 
 				<div id="register" class="formulario">
 					<h3> Registrarse</h3>
-
-					
-
 
 					<?php if(isset($_SESSION['completado'])): ?>
 
@@ -83,5 +85,6 @@
 					<?php borrarErrores(); ?>
 					
 				</div>
+				<?php endif; ?>
 				
 			</aside>

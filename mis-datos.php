@@ -8,7 +8,7 @@
 		<h1> Mis datos </h1>
 
 				<div id="register" class="formulario">
-					<h3> Registrarse</h3>
+					<h3> Actualizar</h3>
 
 				
 					<?php if(isset($_SESSION['completado'])): ?>
@@ -43,7 +43,7 @@
 						<input type="submit" name="submit" value="Actualizar" />
 					</form>
 
-					
+					<?php borrarErrores(); ?>
 				</div>
 </div>
 </div>
