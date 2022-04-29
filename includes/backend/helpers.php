@@ -29,7 +29,7 @@
 
 
 	function getCategorias($conexion){
-		$sql = "SELECT * FROM categorias ORDER BY id ASC;";
+		$sql = "SELECT * FROM categorias WHERE delete_at IS NULL ORDER BY id ASC;";
 		$categorias = mysqli_query($conexion,$sql);
 
 		$result = array();
@@ -43,14 +43,45 @@
 	}
 
 
-	function conseguirCategoria($conexion, $categoria_id){
+	function getCategoria($conexion, $categoria_id){
 
-		$sql = "SELECT * FROM categorias WHERE id = $categoria_id;";
+		$sql = "SELECT * FROM categorias WHERE id = $categoria_id";
 		$categoria = mysqli_query($conexion,$sql);
 		$result = array();
 
 		if($categoria && mysqli_num_rows($categoria) >= 1) {
-			$result = $categoria;
+			$result = $categoria->fetch_assoc();
+		}
+
+		return $result;
+
+	}
+
+	function getUsuario($conexion, $usuario_id){
+
+		$sql = "SELECT * FROM usuarios WHERE id = $usuario_id";
+		$usuario = mysqli_query($conexion,$sql);
+		$result = array();
+
+		if($usuario && mysqli_num_rows($usuario) >= 1) {
+			$result = $usuario->fetch_assoc();
+		}
+
+		return $result;
+
+	}
+
+	
+
+
+	function getUsuarios($conexion){
+		$sql = "SELECT * FROM usuarios WHERE delete_at IS NULL ORDER BY id ASC;";
+		$usuarios = mysqli_query($conexion,$sql);
+
+		$result = array();
+
+		if($usuarios && mysqli_num_rows($usuarios) >= 1) {
+			$result = $usuarios;
 		}
 
 		return $result;

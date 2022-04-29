@@ -48,25 +48,48 @@ if(isset($_POST)) {
 	$guardar_usuario = false;
 	if(count($errores) == 0) {
 		//Inserto el usuario a la BD
-		$guardar_usuario = true;
 
-		$usuario = $_SESSION['usuario'];
+		if(isset($_GET['editar'])) {
+			//Actualizar registros categorias
+			$usuario_id = $_GET['editar'];
+			$sql = "UPDATE usuarios SET apellidos='$apellidos',nombre='$nombre',email='$email',update_at=CURDATE() ". 
+				" WHERE id = $usuario_id";
 
-		//Update registros a Usuarios
-		$sql = "UPDATE usuarios SET ".
-				"nombre = '$nombre', ".
-				"apellidos = '$apellidos', ".
-				"email = '$email' ".
-				"WHERE id = ".$usuario['id'];
+		}else {
+			$guardar_usuario = true;
+			$usuario = $_SESSION['usuario'];
+			//Update registros a Usuario
+
+			$sql = "UPDATE usuarios SET apellidos='$apellidos',nombre='$nombre',email='$email',update_at=CURDATE() ". 
+				" WHERE id = ".$usuario['id'];
+
+			// $sql = "UPDATE usuarios SET ".
+			// 	"nombre = '$nombre', ".
+			// 	"apellidos = '$apellidos', ".
+			// 	"email = '$email' ".
+			// 	"update_at = CURDATE() ".
+			// 	"WHERE id = ".$usuario['id'];
+		}
+
+		
 		$query= mysqli_query($db,$sql);
 
-		if($query) {
-			$_SESSION['usuario']['nombre'] = $nombre;
-			$_SESSION['usuario']['apellidos'] = $apellidos;
-			$_SESSION['usuario']['email'] = $email;
-			$_SESSION['completado'] = "El registro se ha actualizado";
-		}else {
-			$_SESSION['errores']['general'] = "Fallo al actualizar el usuario";
+		if($guardar_usuario) {
+			if($query) {
+				$_SESSION['usuario']['nombre'] = $nombre;
+				$_SESSION['usuario']['apellidos'] = $apellidos;
+				$_SESSION['usuario']['email'] = $email;
+				$_SESSION['completado'] = "El registro se ha actualizado";
+			}else {
+				$_SESSION['errores']['general'] = "Fallo al actualizar el usuario";
+			}
+
+		}
+
+		if(isset($_GET['editar']) && $query ) {
+			$_SESSION['completado'] = "El registro se ha actualizado con exito";
+
+
 		}
 
 
@@ -78,4 +101,12 @@ if(isset($_POST)) {
 	
 }
 
-header('Location: mis-datos.php');
+if($guardar_usuario) {
+	header('Location: mis-datos.php');
+}
+
+if(isset($_GET['editar'])) {
+	header('Location: lista-usuarios.php');
+}
+
+

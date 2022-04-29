@@ -24,9 +24,18 @@
 	if(count($errores) == 0) {
 		//Inserto el usuario a la BD
 
+		if(isset($_GET['editar'])) {
+			//Actualizar registros categorias
+			$categoria_id = $_GET['editar'];
+			$sql = "UPDATE categorias SET nombre='$nombre',update_at=CURDATE() ". 
+				" WHERE id = $categoria_id";
 
-		//Insertar registros a Usuarios
-		$sql = "INSERT INTO categorias VALUES(null,'$nombre',CURDATE());";
+		}else {
+			//Insertar registros categorias
+			$sql = "INSERT INTO categorias VALUES(null,'$nombre',CURDATE(),null,null);";
+
+		}
+		
 		$query= mysqli_query($db,$sql);
 
 		if($query) {
